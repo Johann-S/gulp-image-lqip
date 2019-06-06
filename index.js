@@ -7,7 +7,7 @@ const through = require('through2')
 const PluginError = require('gulp-util').PluginError
 const cheerio = require('cheerio')
 
-const PLUGIN_NAME = 'gulp-lqip'
+const PLUGIN_NAME = 'gulp-image-lqip'
 const validImgExtensions = ['.jpg', '.jpeg', '.png']
 const validFileExtensions = ['.html']
 
@@ -23,7 +23,7 @@ const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
     .catch(err => reject(err))
 })
 
-const processHtmlFile = (pathHtml) => new Promise((resolve, reject) => {
+const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) => {
   const { dir } = path.parse(pathHtml)
   const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
   const $ = cheerio.load(fileContent)
@@ -47,7 +47,7 @@ const processHtmlFile = (pathHtml) => new Promise((resolve, reject) => {
       resultList.forEach(({ originImg, base64 }) => {
         const image = imageList.find(el => $(el).attr('src') === originImg)
 
-        $(image).attr('placeholder', base64)
+        $(image).attr(attribute, base64)
       })
 
       fs.writeFileSync(pathHtml, $.html(), { encoding: 'utf8' })
@@ -56,7 +56,7 @@ const processHtmlFile = (pathHtml) => new Promise((resolve, reject) => {
     .catch(err => reject(err))
 })
 
-module.exports = () => {
+module.exports = (config = { attribute: 'placeholder' }) => {
   const files = []
 
   function aggregate(file, encoding, done) {
@@ -75,7 +75,7 @@ module.exports = () => {
   }
 
   function transform(done) {
-    const promiseFileList = files.map(filePath => processHtmlFile(filePath))
+    const promiseFileList = files.map(filePath => processHtmlFile(filePath, config.attribute))
 
     Promise.all(promiseFileList)
       .then(() => done())
