@@ -28,14 +28,7 @@ const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
 })
 
 const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
-  let dir
-
-  if (config.rootPath && path.isAbsolute(config.rootPath)) {
-    dir = config.rootPath
-  } else {
-    ({ dir } = path.parse(pathHtml))
-  }
-
+  const dir = config.rootPath
   const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
   const $ = cheerio.load(fileContent)
   const imageList = $('img').toArray()
@@ -57,7 +50,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
   Promise.all(promiseList)
     .then(resultList => {
       resultList.forEach(({ originImg, base64 }) => {
-        const image = imageList.find(el => $(el).attr('src') === originImg)
+        const image = imageList.find(el => $(el).attr('src') === originImg && !$(el).attr(config.attribute))
         const originalStrImg = $.html($(image))
 
         $(image).attr(config.attribute, base64)
@@ -78,7 +71,11 @@ module.exports = (config = {}) => {
   config = Object.assign(defaultConfig, config)
 
   if (!config.rootPath) {
-    throw new Error(`You must provide a rootPath to ${PLUGIN_NAME}`)
+    throw new Error(`${PLUGIN_NAME}: rootPath must be provided`)
+  }
+
+  if (!path.isAbsolute(config.rootPath)) {
+    throw new Error(`${PLUGIN_NAME}: rootPath must be absolute`)
   }
 
   function aggregate(file, encoding, done) {
