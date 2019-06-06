@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const lqip = require('lqip')
 const through = require('through2')
-const PluginError = require('gulp-util').PluginError
+const PluginError = require('plugin-error')
 const cheerio = require('cheerio')
 
 const PLUGIN_NAME = 'gulp-image-lqip'
@@ -66,7 +66,7 @@ module.exports = (config = { attribute: 'placeholder' }) => {
     }
 
     if (!validFileExtensions.includes(path.extname(file.path).toLowerCase())) {
-			done(new PluginError(PLUGIN_NAME, 'Support only html files!'))
+			done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
 			return;
 		}
 
