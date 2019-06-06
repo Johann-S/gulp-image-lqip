@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const path = require('path')
 const fs = require('fs')
@@ -17,10 +17,10 @@ const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
       resolve({
         pathImg,
         originImg,
-        base64: result,
+        base64: result
       })
     })
-    .catch(err => reject(err))
+    .catch(error => reject(error))
 })
 
 const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) => {
@@ -30,11 +30,11 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
   const imageList = $('img').toArray()
 
   const promiseList = imageList.filter(el => {
-      const src = $(el).attr('src')
-      const pathImg = path.resolve(dir, src)
+    const src = $(el).attr('src')
+    const pathImg = path.resolve(dir, src)
 
-      return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
-    })
+    return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
+  })
     .map(el => {
       const src = $(el).attr('src')
       const pathImg = path.resolve(dir, src)
@@ -58,7 +58,7 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
       fs.writeFileSync(pathHtml, updatedContentFile, { encoding: 'utf8' })
       resolve()
     })
-    .catch(err => reject(err))
+    .catch(error => reject(error))
 })
 
 module.exports = (config = { attribute: 'placeholder' }) => {
@@ -71,9 +71,9 @@ module.exports = (config = { attribute: 'placeholder' }) => {
     }
 
     if (!validFileExtensions.includes(path.extname(file.path).toLowerCase())) {
-			done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
-			return;
-		}
+      done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
+      return
+    }
 
     files.push(file.path)
     done()
