@@ -3,5 +3,7 @@ const gulpImgLqip = require('..')
 
 gulp.task('default', () => {
   return gulp.src('*.html', { read: false })
-    .pipe(gulpImgLqip())
+    .pipe(gulpImgLqip({
+      rootPath: __dirname
+    }))
 })

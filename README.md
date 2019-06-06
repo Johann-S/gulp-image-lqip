@@ -20,7 +20,9 @@ gulp.task('default', () => {
   return gulp.src('*.html', { read: false })
     // `gulp-image-lqip` needs filepaths
     // so you can't have any plugins before it
-    .pipe(gulpImgLqip())
+    .pipe(gulpImgLqip({
+      rootPath: __dirname
+    }))
 })
 ```
 

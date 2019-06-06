@@ -77,6 +77,10 @@ module.exports = (config = {}) => {
 
   config = Object.assign(defaultConfig, config)
 
+  if (!config.rootPath) {
+    throw new Error(`You must provide a rootPath to ${PLUGIN_NAME}`)
+  }
+
   function aggregate(file, encoding, done) {
     if (file.isStream()) {
       done(new PluginError(PLUGIN_NAME, 'Streams not supported!'))
