@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/Johann-S/gulp-image-lqip.svg?branch=master)](https://travis-ci.org/Johann-S/gulp-image-lqip)
 
-> Parse your HTML to find images and add a placeholder attribute to them which contains their base64 representation thanks to [lqip](https://github.com/zouhir/lqip).
+> Parses your HTML files to find images and adds a placeholder attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip).
 
 ## Install
 
-```
-$ npm install --save-dev gulp-image-lqip
+```sh
+npm install --save-dev gulp-image-lqip
 ```
 
 ## Usage
@@ -18,7 +18,8 @@ const gulpImgLqip = require('gulp-image-lqip');
 
 gulp.task('default', () => {
   return gulp.src('*.html', { read: false })
-    // `gulp-image-lqip` needs filepaths so you can't have any plugins before it
+    // `gulp-image-lqip` needs filepaths
+    // so you can't have any plugins before it
     .pipe(gulpImgLqip())
 })
 ```
@@ -33,10 +34,10 @@ Type: `Object`
 
 ##### attribute
 
-Type: `string`<br>
-Default: `placeholder`<br>
+* Type: `string`
+* Default: `placeholder`
 
-Attribute which contain the base64 representation of your image.
+Attribute which will contain the Base64 representation of your image.
 
 ## Thanks
 
