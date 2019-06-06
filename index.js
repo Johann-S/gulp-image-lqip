@@ -10,7 +10,10 @@ const cheerio = require('cheerio')
 const PLUGIN_NAME = 'gulp-image-lqip'
 const validImgExtensions = ['.jpg', '.jpeg', '.png']
 const validFileExtensions = ['.html']
-const defaultConfig = { attribute: 'data-src' }
+const defaultConfig = {
+  attribute: 'data-src',
+  rootPath: null
+}
 
 const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
   lqip.base64(pathImg)
@@ -24,8 +27,15 @@ const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 })
 
-const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) => {
-  const { dir } = path.parse(pathHtml)
+const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
+  let dir
+
+  if (config.rootPath) {
+    dir = path.resolve(__dirname, config.rootPath)
+  } else {
+    ({ dir } = path.parse(pathHtml))
+  }
+
   const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
   const $ = cheerio.load(fileContent)
   const imageList = $('img').toArray()
@@ -50,7 +60,7 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
         const image = imageList.find(el => $(el).attr('src') === originImg)
         const originalStrImg = $.html($(image))
 
-        $(image).attr(attribute, base64)
+        $(image).attr(config.attribute, base64)
         const updatedStrImg = $.html($(image))
 
         updatedContentFile = updatedContentFile.replace(originalStrImg, updatedStrImg)
@@ -62,8 +72,10 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
     .catch(error => reject(error))
 })
 
-module.exports = (config = defaultConfig) => {
+module.exports = (config = {}) => {
   const files = []
+
+  config = Object.assign(defaultConfig, config)
 
   function aggregate(file, encoding, done) {
     if (file.isStream()) {
@@ -81,7 +93,7 @@ module.exports = (config = defaultConfig) => {
   }
 
   function transform(done) {
-    const promiseFileList = files.map(filePath => processHtmlFile(filePath, config.attribute))
+    const promiseFileList = files.map(filePath => processHtmlFile(filePath, config))
 
     Promise.all(promiseFileList)
       .then(() => done())

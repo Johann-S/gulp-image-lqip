@@ -43,6 +43,13 @@ Type: `Object`
 
 Attribute which will contain the Base64 representation of your image.
 
+##### rootPath
+
+* Type: `string`
+* Default: `null`
+
+Define the rootPath of your website.
+
 ## Thanks
 
 Thanks to [@zouhir](https://github.com/zouhir) for [lqip](https://github.com/zouhir/lqip) :+1:
