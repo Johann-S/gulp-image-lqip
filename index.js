@@ -84,6 +84,7 @@ module.exports = (config = { attribute: 'placeholder' }) => {
 
     Promise.all(promiseFileList)
       .then(() => done())
+      .catch(error => done(new PluginError(PLUGIN_NAME, error)))
   }
 
   return through.obj(aggregate, transform)
