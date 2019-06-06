@@ -48,7 +48,7 @@ Attribute which will contain the Base64 representation of your image.
 * Type: `string`
 * Default: `null`
 
-Define the rootPath of your website.
+Define the rootPath of your website, it must be an **absolute** path.
 
 ## Thanks
 

@@ -30,8 +30,8 @@ const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
 const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
   let dir
 
-  if (config.rootPath) {
-    dir = path.resolve(__dirname, config.rootPath)
+  if (config.rootPath && path.isAbsolute(config.rootPath)) {
+    dir = config.rootPath
   } else {
     ({ dir } = path.parse(pathHtml))
   }
