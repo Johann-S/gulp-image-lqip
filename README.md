@@ -32,7 +32,13 @@ Currently only `['jpeg', 'jpg', 'png']` are supported due to [lqip](https://gith
 
 ## API
 
-### gulpImgLqip(options)
+### gulpImgLqip(rootPath, options)
+
+#### rootPath
+
+* Type: `string`
+
+Define the rootPath of your website, it must be an **absolute** path.
 
 #### options
 
@@ -44,13 +50,6 @@ Type: `Object`
 * Default: `data-src`
 
 Attribute which will contain the Base64 representation of your image.
-
-##### rootPath
-
-* Type: `string`
-* Default: `null`
-
-Define the rootPath of your website, it must be an **absolute** path.
 
 ## Thanks
 

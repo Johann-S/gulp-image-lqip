@@ -60,18 +60,16 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 })
 
-module.exports = (config = {}) => {
+module.exports = (rootPath, config = {}) => {
   const files = []
 
   config = Object.assign(defaultConfig, config)
 
-  if (!config.rootPath) {
-    throw new Error(`${PLUGIN_NAME}: rootPath must be provided`)
-  }
-
-  if (!path.isAbsolute(config.rootPath)) {
+  if (!path.isAbsolute(rootPath)) {
     throw new Error(`${PLUGIN_NAME}: rootPath must be absolute`)
   }
+
+  config.rootPath = rootPath
 
   function aggregate(file, encoding, done) {
     if (file.isStream()) {
