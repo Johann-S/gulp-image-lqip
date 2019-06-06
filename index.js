@@ -10,6 +10,7 @@ const cheerio = require('cheerio')
 const PLUGIN_NAME = 'gulp-image-lqip'
 const validImgExtensions = ['.jpg', '.jpeg', '.png']
 const validFileExtensions = ['.html']
+const defaultConfig = { attribute: 'data-src' }
 
 const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
   lqip.base64(pathImg)
@@ -61,7 +62,7 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
     .catch(error => reject(error))
 })
 
-module.exports = (config = { attribute: 'placeholder' }) => {
+module.exports = (config = defaultConfig) => {
   const files = []
 
   function aggregate(file, encoding, done) {

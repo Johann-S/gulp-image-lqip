@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Johann-S/gulp-image-lqip.svg?branch=master)](https://travis-ci.org/Johann-S/gulp-image-lqip)
 
-> Parses your HTML files to find images and adds a placeholder attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip).
+> Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip).
 
 ## Install
 
@@ -35,7 +35,7 @@ Type: `Object`
 ##### attribute
 
 * Type: `string`
-* Default: `placeholder`
+* Default: `data-src`
 
 Attribute which will contain the Base64 representation of your image.
 
