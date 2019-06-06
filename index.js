@@ -42,15 +42,20 @@ const processHtmlFile = (pathHtml, attribute) => new Promise((resolve, reject) =
       return lqipFile(pathImg, src)
     })
 
+  let updatedContentFile = fileContent
   Promise.all(promiseList)
     .then(resultList => {
       resultList.forEach(({ originImg, base64 }) => {
         const image = imageList.find(el => $(el).attr('src') === originImg)
+        const originalStrImg = $.html($(image))
 
         $(image).attr(attribute, base64)
+        const updatedStrImg = $.html($(image))
+
+        updatedContentFile = updatedContentFile.replace(originalStrImg, updatedStrImg)
       })
 
-      fs.writeFileSync(pathHtml, $.html(), { encoding: 'utf8' })
+      fs.writeFileSync(pathHtml, updatedContentFile, { encoding: 'utf8' })
       resolve()
     })
     .catch(err => reject(err))
