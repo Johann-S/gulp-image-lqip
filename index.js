@@ -42,13 +42,13 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
 
   const promiseList = imageList.filter(el => {
     const src = $(el).attr('src')
-    const pathImg = path.resolve(dir, src)
+    const pathImg = path.join(dir, src)
 
     return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
   })
     .map(el => {
       const src = $(el).attr('src')
-      const pathImg = path.resolve(dir, src)
+      const pathImg = path.join(dir, src)
 
       return lqipFile(pathImg, src)
     })
