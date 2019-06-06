@@ -1,0 +1,25 @@
+{
+  "name": "gulp-image-lqip",
+  "version": "1.0.0",
+  "description": "Gulp plugin which use lqip",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "lqip",
+    "images"
+  ],
+  "author": "Johann-S <johann.servoire@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "gulp-util": "^3.0.8",
+    "lqip": "^2.1.0",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
