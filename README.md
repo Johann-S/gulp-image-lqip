@@ -24,6 +24,10 @@ gulp.task('default', () => {
 })
 ```
 
+## Supported files
+
+Currently only `['jpeg', 'jpg', 'png']` are supported due to [lqip](https://github.com/zouhir/lqip#lqipbase64filepath-string).
+
 ## API
 
 ### gulpImgLqip(options)
