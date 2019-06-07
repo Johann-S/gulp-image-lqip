@@ -6,6 +6,7 @@ const lqip = require('lqip')
 const through = require('through2')
 const PluginError = require('plugin-error')
 const cheerio = require('cheerio')
+const pretty = require('pretty')
 
 const PLUGIN_NAME = 'gulp-image-lqip'
 const validImgExtensions = ['.jpg', '.jpeg', '.png']
@@ -54,7 +55,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
         $(image).attr(config.attribute, base64)
       })
 
-      fs.writeFileSync(pathHtml, $.html(), { encoding: 'utf8' })
+      fs.writeFileSync(pathHtml, pretty($.html(), { ocd: true }), { encoding: 'utf8' })
       resolve()
     })
     .catch(error => reject(error))
