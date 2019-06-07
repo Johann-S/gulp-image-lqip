@@ -6,7 +6,7 @@ const PluginError = require('plugin-error')
 const { processHtmlFile } = require('./util')
 
 const PLUGIN_NAME = 'gulp-image-lqip'
-const validFileExtensions = ['.html']
+const validFileExtensions = ['.html', '.htm']
 const defaultConfig = {
   attribute: 'data-src',
   srcAttr: 'src'
