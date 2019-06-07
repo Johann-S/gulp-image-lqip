@@ -2,7 +2,7 @@
   "name": "gulp-image-lqip",
   "version": "1.0.0",
   "description": "Gulp plugin which generates HTML image placeholders using lqip",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Johann-S/gulp-image-lqip.git"
@@ -34,9 +34,12 @@
     "gulp": "^4.0.2"
   },
   "files": [
-    "index.js"
+    "src/*.js"
   ],
   "engines": {
     "node": ">=8"
-  }
+  },
+  "contributors": [
+    "XhmikosR <xhmikosr@gmail.com>"
+  ]
 }

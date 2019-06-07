@@ -1,20 +1,10 @@
-'use strict'
-
 const path = require('path')
 const fs = require('fs')
 const lqip = require('lqip')
-const through = require('through2')
-const PluginError = require('plugin-error')
 const cheerio = require('cheerio')
 const pretty = require('pretty')
 
-const PLUGIN_NAME = 'gulp-image-lqip'
 const validImgExtensions = ['.jpg', '.jpeg', '.png']
-const validFileExtensions = ['.html']
-const defaultConfig = {
-  attribute: 'data-src',
-  rootPath: null
-}
 
 const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
   lqip.base64(pathImg)
@@ -61,39 +51,6 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
     .catch(error => reject(error))
 })
 
-module.exports = (rootPath, config = {}) => {
-  const files = []
-
-  config = Object.assign(defaultConfig, config)
-
-  if (!path.isAbsolute(rootPath)) {
-    throw new Error(`${PLUGIN_NAME}: rootPath must be absolute`)
-  }
-
-  config.rootPath = rootPath
-
-  function aggregate(file, encoding, done) {
-    if (file.isStream()) {
-      done(new PluginError(PLUGIN_NAME, 'Streams not supported!'))
-      return
-    }
-
-    if (!validFileExtensions.includes(path.extname(file.path).toLowerCase())) {
-      done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
-      return
-    }
-
-    files.push(file.path)
-    done()
-  }
-
-  function transform(done) {
-    const promiseFileList = files.map(filePath => processHtmlFile(filePath, config))
-
-    Promise.all(promiseFileList)
-      .then(() => done())
-      .catch(error => done(new PluginError(PLUGIN_NAME, error)))
-  }
-
-  return through.obj(aggregate, transform)
+module.exports = {
+  processHtmlFile
 }
