@@ -30,7 +30,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
     const src = $(el).attr(config.srcAttr)
 
     // @todo: handle that case later
-    if (src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
+    if (!src || src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
       return false
     }
 
@@ -48,7 +48,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
   Promise.all(promiseList)
     .then(resultList => {
       resultList.forEach(({ originImg, base64 }) => {
-        const image = imageList.find(el => $(el).attr('src') === originImg && !$(el).attr(config.attribute))
+        const image = imageList.find(el => $(el).attr(config.srcAttr) === originImg && !$(el).attr(config.attribute))
 
         $(image).attr(config.attribute, base64)
       })
