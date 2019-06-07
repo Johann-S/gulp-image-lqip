@@ -25,13 +25,11 @@ module.exports = (rootPath, config = {}) => {
 
   function aggregate(file, encoding, done) {
     if (file.isStream()) {
-      done(new PluginError(PLUGIN_NAME, 'Streams not supported!'))
-      return
+      return done(new PluginError(PLUGIN_NAME, 'Streams not supported!'))
     }
 
     if (!validFileExtensions.includes(path.extname(file.path).toLowerCase())) {
-      done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
-      return
+      return done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
     }
 
     files.push(file.path)
