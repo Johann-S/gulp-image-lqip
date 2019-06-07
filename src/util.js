@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path')
 const fs = require('fs')
 const lqip = require('lqip')
@@ -28,7 +30,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
     const src = $(el).attr('src')
 
     // @todo: handle that case later
-    if (src.startsWith('http') || src.startsWith('https')) {
+    if (src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
       return false
     }
 
