@@ -35,6 +35,7 @@ Currently only `['jpeg', 'jpg', 'png']` are supported due to [lqip](https://gith
 #### rootPath
 
 * Type: `string`
+* **Required**
 
 Define the rootPath of your website, it must be an **absolute** path.
 
