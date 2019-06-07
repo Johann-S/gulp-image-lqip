@@ -4,7 +4,7 @@
 [![dependencies Status](https://img.shields.io/david/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip)
 [![devDependency Status](https://img.shields.io/david/dev/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip?type=dev)
 
-> Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip).
+> Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip) for the inspiration.
 
 ## Install
 
@@ -28,7 +28,7 @@ gulp.task('default', () => {
 
 ## Supported files
 
-Currently only `['jpeg', 'jpg', 'png']` are supported due to [lqip](https://github.com/zouhir/lqip#lqipbase64filepath-string).
+Currently only `['jpeg', 'jpg', 'png', 'bmp', 'tiff', 'gif']` are supported.
 
 ## API
 
@@ -61,7 +61,7 @@ Attribute which contain your image.
 
 ## Thanks
 
-Thanks to [@zouhir](https://github.com/zouhir) for [lqip](https://github.com/zouhir/lqip) :+1:
+Thanks [lqip](https://github.com/zouhir/lqip) for the inspiration :+1:
 
 ## License
 

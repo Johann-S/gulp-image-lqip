@@ -3,7 +3,7 @@
 const path = require('path')
 const through = require('through2')
 const PluginError = require('plugin-error')
-const { processHtmlFile } = require('./util')
+const { processHtml } = require('./process-html')
 
 const PLUGIN_NAME = 'gulp-image-lqip'
 const validFileExtensions = ['.html', '.htm']
@@ -37,7 +37,7 @@ module.exports = (rootPath, config = {}) => {
   }
 
   function transform(done) {
-    const promiseFileList = files.map(filePath => processHtmlFile(filePath, config))
+    const promiseFileList = files.map(filePath => processHtml(filePath, config))
 
     Promise.all(promiseFileList)
       .then(() => done())

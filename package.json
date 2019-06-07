@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "lqip": "^2.1.0",
+    "jimp": "^0.6.4",
     "plugin-error": "^1.0.1",
     "pretty": "^2.0.0",
     "through2": "^3.0.1"

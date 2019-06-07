@@ -2,25 +2,13 @@
 
 const path = require('path')
 const fs = require('fs')
-const lqip = require('lqip')
 const cheerio = require('cheerio')
 const pretty = require('pretty')
+const { processImage } = require('./process-image')
 
-const validImgExtensions = ['.jpg', '.jpeg', '.png']
+const validImgExtensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff', '.gif']
 
-const lqipFile = (pathImg, originImg) => new Promise((resolve, reject) => {
-  lqip.base64(pathImg)
-    .then(result => {
-      resolve({
-        pathImg,
-        originImg,
-        base64: result
-      })
-    })
-    .catch(error => reject(error))
-})
-
-const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
+const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
   const dir = config.rootPath
   const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
   const $ = cheerio.load(fileContent)
@@ -42,7 +30,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
       const src = $(el).attr(config.srcAttr)
       const pathImg = path.join(dir, src)
 
-      return lqipFile(pathImg, src)
+      return processImage(pathImg, src)
     })
 
   Promise.all(promiseList)
@@ -60,5 +48,5 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
 })
 
 module.exports = {
-  processHtmlFile
+  processHtml
 }
