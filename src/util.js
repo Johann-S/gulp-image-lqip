@@ -26,6 +26,12 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
 
   const promiseList = imageList.filter(el => {
     const src = $(el).attr('src')
+
+    // @todo: handle that case later
+    if (src.startsWith('http') || src.startsWith('https')) {
+      return false
+    }
+
     const pathImg = path.join(dir, src)
 
     return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
