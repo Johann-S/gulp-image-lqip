@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/Johann-S/gulp-image-lqip#readme",
   "scripts": {
+    "lint": "eslint src/",
     "test": "gulp --gulpfile test/gulpfile.js"
   },
   "keywords": [
@@ -31,13 +32,15 @@
     "through2": "^3.0.1"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^9.1.0",
     "gulp": "^4.0.2"
   },
   "files": [
     "src/*.js"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=8.10.0"
   },
   "contributors": [
     "XhmikosR <xhmikosr@gmail.com>"
