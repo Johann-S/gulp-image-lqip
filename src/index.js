@@ -9,7 +9,7 @@ const PLUGIN_NAME = 'gulp-image-lqip'
 const validFileExtensions = ['.html']
 const defaultConfig = {
   attribute: 'data-src',
-  rootPath: null
+  srcAttr: 'src'
 }
 
 module.exports = (rootPath, config = {}) => {

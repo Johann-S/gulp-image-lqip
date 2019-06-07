@@ -50,6 +50,13 @@ Type: `Object`
 
 Attribute which will contain the Base64 representation of your image.
 
+##### srcAttr
+
+* Type: `string`
+* Default: `src`
+
+Attribute which contain your image.
+
 ## Thanks
 
 Thanks to [@zouhir](https://github.com/zouhir) for [lqip](https://github.com/zouhir/lqip) :+1:

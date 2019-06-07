@@ -27,7 +27,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
   const imageList = $('img').toArray()
 
   const promiseList = imageList.filter(el => {
-    const src = $(el).attr('src')
+    const src = $(el).attr(config.srcAttr)
 
     // @todo: handle that case later
     if (src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
@@ -39,7 +39,7 @@ const processHtmlFile = (pathHtml, config) => new Promise((resolve, reject) => {
     return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
   })
     .map(el => {
-      const src = $(el).attr('src')
+      const src = $(el).attr(config.srcAttr)
       const pathImg = path.join(dir, src)
 
       return lqipFile(pathImg, src)
