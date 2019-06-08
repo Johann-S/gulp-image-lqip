@@ -7,10 +7,7 @@ const supportedMimetypes = {
   jpeg: 'image/jpeg',
   jpg: 'image/jpeg',
   png: 'image/png',
-  gif: 'image/gif',
-  bmp: 'image/bmp',
-  tif: 'image/tiff',
-  tiff: 'image/tiff'
+  gif: 'image/gif'
 }
 
 const toBase64 = (extMimeType, data) => {

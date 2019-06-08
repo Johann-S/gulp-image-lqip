@@ -28,7 +28,7 @@ gulp.task('default', () => {
 
 ## Supported files
 
-Currently only `['jpeg', 'jpg', 'png', 'bmp', 'tiff', 'gif']` are supported.
+Currently `['jpeg', 'jpg', 'png', 'gif']` files are supported.
 
 ## API
 
