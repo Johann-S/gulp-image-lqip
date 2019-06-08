@@ -52,6 +52,13 @@ Type: `Object`
 
 Attribute which will contain the Base64 representation of your image.
 
+##### pretty
+
+* Type: `Boolean`
+* Default: `true`
+
+Use [pretty](https://github.com/jonschlinkert/pretty) to beautify the HTML files.
+
 ##### srcAttr
 
 * Type: `string`

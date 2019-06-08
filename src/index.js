@@ -9,6 +9,7 @@ const PLUGIN_NAME = 'gulp-image-lqip'
 const validFileExtensions = ['.html', '.htm']
 const defaultConfig = {
   attribute: 'data-src',
+  pretty: true,
   srcAttr: 'src'
 }
 
