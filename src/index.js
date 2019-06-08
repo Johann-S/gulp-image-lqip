@@ -29,7 +29,7 @@ module.exports = (rootPath, config = {}) => {
     }
 
     if (!validFileExtensions.includes(path.extname(file.path).toLowerCase())) {
-      return done(new PluginError(PLUGIN_NAME, 'Only html files are supported!'))
+      return done(new PluginError(PLUGIN_NAME, 'Only htm(l) files are supported!'))
     }
 
     files.push(file.path)
