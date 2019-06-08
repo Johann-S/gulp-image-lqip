@@ -6,29 +6,37 @@ const cheerio = require('cheerio')
 const pretty = require('pretty')
 const { processImage } = require('./process-image')
 
-const validImgExtensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff', '.gif']
+const validImgExtensions = [
+  '.jpg',
+  '.jpeg',
+  '.png',
+  '.bmp',
+  '.tif',
+  '.tiff',
+  '.gif'
+]
 
 const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
-  const dir = config.rootPath
+  const { rootPath, attribute, srcAttr } = config
   const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
   const $ = cheerio.load(fileContent)
   const imageList = $('img').toArray()
 
   const promiseList = imageList.filter(el => {
-    const src = $(el).attr(config.srcAttr)
+    const src = $(el).attr(srcAttr)
 
-    // @todo: handle that case later
+    // @todo: handle remote images later
     if (!src || src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
       return false
     }
 
-    const pathImg = path.join(dir, src)
+    const pathImg = path.join(rootPath, src)
 
     return validImgExtensions.includes(path.extname(pathImg).toLowerCase())
   })
     .map(el => {
-      const src = $(el).attr(config.srcAttr)
-      const pathImg = path.join(dir, src)
+      const src = $(el).attr(srcAttr)
+      const pathImg = path.join(rootPath, src)
 
       return processImage(pathImg, src)
     })
@@ -36,9 +44,9 @@ const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
   Promise.all(promiseList)
     .then(resultList => {
       resultList.forEach(({ originImg, base64 }) => {
-        const image = imageList.find(el => $(el).attr(config.srcAttr) === originImg && !$(el).attr(config.attribute))
+        const image = imageList.find(el => $(el).attr(srcAttr) === originImg && !$(el).attr(attribute))
 
-        $(image).attr(config.attribute, base64)
+        $(image).attr(attribute, base64)
       })
 
       fs.writeFileSync(pathHtml, pretty($.html(), { ocd: true }), { encoding: 'utf8' })
