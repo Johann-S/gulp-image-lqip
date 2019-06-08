@@ -17,7 +17,7 @@
   "homepage": "https://github.com/Johann-S/gulp-image-lqip#readme",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src/",
+    "lint": "eslint .",
     "test": "npm run lint && gulp --gulpfile test/gulpfile.js"
   },
   "keywords": [
