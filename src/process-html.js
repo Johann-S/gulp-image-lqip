@@ -49,8 +49,13 @@ const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
         $(image).attr(attribute, base64)
       })
 
-      fs.writeFileSync(pathHtml, pretty($.html(), { ocd: true }), { encoding: 'utf8' })
-      resolve()
+      fs.writeFile(pathHtml, pretty($.html(), { ocd: true }), err => {
+        if (err) {
+          throw err
+        }
+
+        resolve()
+      })
     })
     .catch(error => reject(error))
 })
