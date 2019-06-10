@@ -6,6 +6,8 @@
 
 > Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip) for the inspiration.
 
+[Demo](https://gulp-image-lqip.netlify.com/)
+
 ## Install
 
 ```sh
