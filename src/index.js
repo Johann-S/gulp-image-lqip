@@ -33,12 +33,12 @@ module.exports = (rootPath, config = {}) => {
       return done(new PluginError(PLUGIN_NAME, 'Only htm(l) files are supported!'))
     }
 
-    files.push(file.path)
+    files.push(file)
     done()
   }
 
   function transform(done) {
-    const promiseFileList = files.map(filePath => processHtml(filePath, config))
+    const promiseFileList = files.map(file => processHtml(file, config))
 
     Promise.all(promiseFileList)
       .then(() => done())

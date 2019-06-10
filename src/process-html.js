@@ -16,9 +16,9 @@ const validImgExtensions = [
   '.gif'
 ]
 
-const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
+const processHtml = (file, config) => new Promise((resolve, reject) => {
   const { rootPath, attribute, srcAttr, pretty: prettyHtml } = config
-  const fileContent = fs.readFileSync(pathHtml, { encoding: 'utf8' })
+  const fileContent = file.contents.toString('utf8')
   const $ = cheerio.load(fileContent)
   const imageList = $('img').toArray()
 
@@ -53,7 +53,7 @@ const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
         pretty($.html(), { ocd: true }) :
         $.html()
 
-      fs.writeFile(pathHtml, data, err => {
+      fs.writeFile(file.path, data, err => {
         if (err) {
           throw err
         }
