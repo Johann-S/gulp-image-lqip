@@ -10,9 +10,7 @@ const supportedMimetypes = {
   gif: 'image/gif'
 }
 
-const toBase64 = (extMimeType, data) => {
-  return `data:${extMimeType};base64,${data.toString('base64')}`
-}
+const toBase64 = (extMimeType, data) => `data:${extMimeType};base64,${data.toString('base64')}`
 
 const processImage = (pathImg, originalImg) => new Promise((resolve, reject) => {
   const extension = path.extname(pathImg)
