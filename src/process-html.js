@@ -43,8 +43,8 @@ const processHtml = (pathHtml, config) => new Promise((resolve, reject) => {
 
   Promise.all(promiseList)
     .then(resultList => {
-      resultList.forEach(({ originImg, base64 }) => {
-        const image = imageList.find(el => $(el).attr(srcAttr) === originImg && !$(el).attr(attribute))
+      resultList.forEach(({ originalImg, base64 }) => {
+        const image = imageList.find(el => $(el).attr(srcAttr) === originalImg && !$(el).attr(attribute))
 
         $(image).attr(attribute, base64)
       })

@@ -14,7 +14,7 @@ const toBase64 = (extMimeType, data) => {
   return `data:${extMimeType};base64,${data.toString('base64')}`
 }
 
-const processImage = (pathImg, originImg) => new Promise((resolve, reject) => {
+const processImage = (pathImg, originalImg) => new Promise((resolve, reject) => {
   const extension = path.extname(pathImg)
     .split('.')
     .pop()
@@ -30,7 +30,7 @@ const processImage = (pathImg, originImg) => new Promise((resolve, reject) => {
         if (data) {
           return resolve({
             pathImg,
-            originImg,
+            originalImg,
             base64: toBase64(supportedMimetypes[extension], data)
           })
         }
