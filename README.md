@@ -4,7 +4,7 @@
 [![dependencies Status](https://img.shields.io/david/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip)
 [![devDependency Status](https://img.shields.io/david/dev/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip?type=dev)
 
-> Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation thanks to [lqip](https://github.com/zouhir/lqip) for the inspiration.
+> Parses your HTML files to find images and adds a data-src attribute to them which contains their Base64 representation.
 
 [Demo](https://gulp-image-lqip.netlify.com/)
 
