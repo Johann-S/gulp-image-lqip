@@ -44,12 +44,12 @@
           var image = new Image()
           image.src = originSrc
 
-          image.onload = function () {
+          image.addEventListener('load', function () {
             setTimeout(function () {
               imageEl.setAttribute('src', originSrc)
               imageEl.removeAttribute('data-src')
             }, 200)
-          }
+          })
         })
       })()
     </script>
