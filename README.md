@@ -21,7 +21,7 @@ const gulp = require('gulp');
 const gulpImgLqip = require('gulp-image-lqip');
 
 gulp.task('default', () => {
-  return gulp.src('*.html', { read: false })
+  return gulp.src('*.html')
     // `gulp-image-lqip` needs filepaths
     // so you can't have any plugins before it
     .pipe(gulpImgLqip(__dirname))
@@ -67,6 +67,12 @@ Use [pretty](https://github.com/jonschlinkert/pretty) to beautify the HTML files
 * Default: `src`
 
 Attribute which contain your image.
+
+## Support me
+
+If you want to thank me or supporting my work:
+ - You can become my [Patron](https://www.patreon.com/jservoire)
+ - Or buy me a coffee: [PayPal](https://www.paypal.me/jservoire)
 
 ## Thanks
 
