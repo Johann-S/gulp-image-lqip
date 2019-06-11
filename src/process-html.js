@@ -10,9 +10,6 @@ const validImgExtensions = [
   '.jpg',
   '.jpeg',
   '.png',
-  '.bmp',
-  '.tif',
-  '.tiff',
   '.gif'
 ]
 
