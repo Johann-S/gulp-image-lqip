@@ -19,23 +19,12 @@ const processImage = (pathImg, originalImg) => new Promise((resolve, reject) => 
 
   jimp.read(pathImg)
     .then(image => image.resize(10, jimp.AUTO))
-    .then(image => {
-      image.getBuffer(supportedMimetypes[extension], (err, data) => {
-        if (err) {
-          return reject(err)
-        }
-
-        if (data) {
-          return resolve({
-            pathImg,
-            originalImg,
-            base64: toBase64(supportedMimetypes[extension], data)
-          })
-        }
-
-        return reject(new Error('Unable to generate data from this svg'))
-      })
-    })
+    .then(image => image.getBufferAsync(supportedMimetypes[extension]))
+    .then(data => resolve({
+      pathImg,
+      originalImg,
+      base64: toBase64(supportedMimetypes[extension], data)
+    }))
     .catch(error => reject(error))
 })
 
