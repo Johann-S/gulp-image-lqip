@@ -1,5 +1,6 @@
 # gulp-image-lqip
 
+[![npm version](https://img.shields.io/npm/v/gulp-image-lqip.svg)](https://www.npmjs.com/package/gulp-image-lqip)
 [![Build Status](https://travis-ci.org/Johann-S/gulp-image-lqip.svg?branch=master)](https://travis-ci.org/Johann-S/gulp-image-lqip)
 [![dependencies Status](https://img.shields.io/david/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip)
 [![devDependency Status](https://img.shields.io/david/dev/Johann-S/gulp-image-lqip.svg)](https://david-dm.org/Johann-S/gulp-image-lqip?type=dev)
