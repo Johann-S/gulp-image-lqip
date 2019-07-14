@@ -71,9 +71,10 @@ Attribute which contain your image.
 
 ## Support me
 
-If you want to thank me or supporting my work:
- - You can become my [Patron](https://www.patreon.com/jservoire)
- - Or buy me a coffee: [PayPal](https://www.paypal.me/jservoire)
+If you want to thank me or support my work:
+
+- You can become my [Patron](https://www.patreon.com/jservoire)
+- Or buy me a coffee: [PayPal](https://www.paypal.me/jservoire)
 
 ## Thanks
 
