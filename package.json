@@ -29,14 +29,14 @@
   ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "jimp": "^0.6.4",
+    "jimp": "^0.6.8",
     "plugin-error": "^1.0.1",
     "pretty": "^2.0.0",
     "through2": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-node": "^9.2.0",
     "gulp": "^4.0.2"
   },
   "files": [
