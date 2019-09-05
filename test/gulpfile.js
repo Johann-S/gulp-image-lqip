@@ -28,7 +28,7 @@ const validate = () => {
   })
 
   if (errors !== expectedErrors) {
-    Promise.reject(new Error(`Some images doesn't have a data-src attribute (expected ${expectedErrors} got ${errors})`))
+    Promise.reject(new Error(`Some images don't have a data-src attribute (expected ${expectedErrors} got ${errors})`))
 
     return
   }
