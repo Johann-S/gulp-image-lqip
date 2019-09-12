@@ -7,15 +7,19 @@
     <title>Gulp-image-lqip Demo</title>
     <style>
       img.no-js {
-        filter: blur(0);
+        -webkit-filter: blur(0);
+                filter: blur(0);
       }
 
       img[data-src] {
-        filter: blur(50px);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
       }
 
       img {
+        transition: -webkit-filter .7s ease-in;
         transition: filter .7s ease-in;
+        transition: filter .7s ease-in, -webkit-filter .7s ease-in;
       }
     </style>
   </head>
