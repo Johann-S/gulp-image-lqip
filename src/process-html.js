@@ -23,7 +23,7 @@ const processHtml = (file, config) => new Promise((resolve, reject) => {
     const src = $(el).attr(srcAttr)
 
     // @todo: handle remote images later
-    if (!src || src.startsWith('http') || src.startsWith('https') || src.startsWith('//')) {
+    if (!src || src.startsWith('http') || src.startsWith('//')) {
       return false
     }
 
