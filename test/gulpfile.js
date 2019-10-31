@@ -1,7 +1,7 @@
 'use strict'
 
-const gulp = require('gulp')
 const fs = require('fs')
+const gulp = require('gulp')
 const cheerio = require('cheerio')
 const gulpImgLqip = require('..')
 
