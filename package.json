@@ -29,20 +29,20 @@
   ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "jimp": "^0.9.6",
+    "jimp": "^0.14.0",
     "plugin-error": "^1.0.1",
     "pretty": "^2.0.0",
-    "through2": "^3.0.1"
+    "through2": "^4.0.2"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-node": "^11.1.0",
     "gulp": "^4.0.2"
   },
   "files": [
     "src/*.js"
   ],
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=10"
   }
 }
