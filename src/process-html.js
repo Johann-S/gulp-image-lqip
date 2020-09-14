@@ -4,14 +4,9 @@ const path = require('path')
 const fs = require('fs')
 const cheerio = require('cheerio')
 const pretty = require('pretty')
-const { processImage } = require('./process-image')
+const { processImage, supportedMimetypes } = require('./process-image')
 
-const validImgExtensions = [
-  '.jpg',
-  '.jpeg',
-  '.png',
-  '.gif'
-]
+const validImgExtensions = Object.keys(supportedMimetypes).map(ext => `.${ext}`)
 
 const processHtml = (file, config) => new Promise((resolve, reject) => {
   const { rootPath, attribute, srcAttr, pretty: prettyHtml } = config

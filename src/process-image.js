@@ -29,5 +29,6 @@ const processImage = (pathImg, originalImg) => new Promise((resolve, reject) => 
 })
 
 module.exports = {
-  processImage
+  processImage,
+  supportedMimetypes
 }
