@@ -1,6 +1,6 @@
 {
   "name": "gulp-image-lqip",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Gulp plugin which generates HTML image placeholders using lqip technique",
   "author": "Johann-S <johann.servoire@gmail.com> (https://www.johann-servoire.fr/)",
   "contributors": [
